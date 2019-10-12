@@ -8,6 +8,7 @@ import {
   } from "./header.js"
 class HeaderC extends Component{
     constructor(props){
+        console.log(props)
         super(props);
         console.log(props)
     }
@@ -18,12 +19,14 @@ class HeaderC extends Component{
                 <HeaderMenu>
                 <div className="home">首页</div>
                 <div className="download">下载App</div>
-                <input className="search"></input>
-                <div className="search_panel">aaa</div>
+                <input className="search" onFocus={this.props.handerFocus} onBlur={this.props.handerBlur}></input>
+                <span className="iconfont loupe">&#xe624;</span>
+                {this.props.focused===true?<div className="search_panel">热门搜索</div>:""}
                 </HeaderMenu>
                 <HeaderPerson>
-                <div>aaa</div>
-                <div>beta</div>
+                <span className="iconfont">&#xe636;</span>
+                <span className="iconfont">&#xe728;</span>
+                <span className="iconfont">&#xe64c;</span>
                 <div>登录</div>
                 <div>注册</div>
                 <div>{this.props.focused}</div>
@@ -33,15 +36,24 @@ class HeaderC extends Component{
     }
 }
 const mapStateToProps=(state)=>{
-    console.log(state)
     return {
         focused:state.focused
     }
 }
 const mapDispatchToProps=(dispatch)=>{
     return {
-
+        handerFocus(){
+            let actions={
+                type:"search_focus"
+            }
+            dispatch(actions)
+        },
+        handerBlur(){
+            let actions={
+                type:"search_blur"
+            }
+            dispatch(actions)
+        }
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(HeaderC);
-// export default HeaderC;
