@@ -34,6 +34,13 @@
       "unicode_decimal": 58934
     },
     {
+      "icon_id": "5201483",
+      "name": "换一批",
+      "font_class": "huanyipi",
+      "unicode": "e6e1",
+      "unicode_decimal": 59105
+    },
+    {
       "icon_id": "5649815",
       "name": "放大镜",
       "font_class": "fangdajing",
