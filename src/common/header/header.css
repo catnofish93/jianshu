@@ -129,3 +129,13 @@
     font-size: 12px;
     margin-right: 5px
   }
+  .red_item{
+      font-size: 12px;
+      border:solid 1px #ccc;
+      border-radius: 2px;
+      padding: 3px 6px;
+      margin-right: 5px;
+      display: inline-block;
+      margin-top:10px;
+      cursor: pointer;
+  }

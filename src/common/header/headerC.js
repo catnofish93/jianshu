@@ -1,7 +1,7 @@
 import React,{Component} from "react"
 import {connect} from "react-redux"
 import "./header.css"
-import { CSSTransition } from 'react-transition-group';
+import axios from "axios"
 import {
     HeaderWrap,
     HeaderTitle,
@@ -27,7 +27,7 @@ class HeaderC extends Component{
                     {this.props.focused===false?<div className="search_panel">
                         <span>热门搜索</span>
                         <div className="change_red"><span className="iconfont">&#xe6e1;</span>换一批</div>
-                        {this.getRedList()}
+                        <div>{this.getRedList()}</div>
                     </div>:""}
                 </div>
                 </HeaderMenu>
@@ -43,9 +43,14 @@ class HeaderC extends Component{
         )
     }
     getRedList(){
-        let redData=["vue","javascript","webpack","无锡","军运会","房价"]
-        return redData.map(item=>{
-            return <div>{item}</div>
+        axios.get("json/red_data.json").then(res=>{
+            let redData=res.data.data;
+            console.log(redData)
+            return redData.map(item=>{
+                return <span className="red_item">{item}</span>
+            })
+        }).catch(err=>{
+
         })
     }
 }
