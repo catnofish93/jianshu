@@ -29,7 +29,7 @@ class HeaderC extends Component{
                 <div className="search_wrap">
                     <input className={[this.props.focused?'search search_focus':'search']} onFocus={this.props.handerFocus} onBlur={this.props.handerBlur} ></input>
                     <span className={this.props.focused?'iconfont loupe graybc':'iconfont loupe'}>&#xe624;</span>
-                    {this.props.focused===false?<div className="search_panel">
+                    {this.props.focused===true?<div className="search_panel">
                         <span>热门搜索</span>
                         <div className={["change_red ", this.state.transition?'transition':''].join(' ')} onClick={this.getRedList.bind(this)}><span className="iconfont">&#xe6e1;</span>换一批</div>
                         <div>{this.state.filerArray}</div>
