@@ -6,16 +6,17 @@
     padding-right: 15px;
     padding: 15px;
     display: flex;
+    cursor: pointer;
 }
 .infoList{
     border-bottom: solid 1px #f0f0f0;
+    padding: 30px 0;
 }
 .adver{
-    width: 300px;
+    width: 400px;
+    margin-left: 20px;
 }
 .name{
-    margin: -7px 0 4px;
-    display: inherit;
     font-size: 18px;
     font-weight: 700;
     line-height: 1.5;
@@ -52,4 +53,34 @@
 }
 .like{
     color: #787878
+}
+.adverImage{
+    width: 100%;
+    min-height: 50px;
+    margin-bottom: 6px;
+    border-radius: 4px;
+}
+.download1{
+    margin-bottom: 30px;
+    padding: 10px 22px;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.qrcode{
+    width: 60px;
+    height: 60px;
+    opacity: .85;
+}
+.download1 .title{
+    font-size: 15px;
+    color: #333;
+}
+.download1 .description{
+    margin-top: 4px;
+    font-size: 13px;
+    color: #999;
 }
