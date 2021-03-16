@@ -10,9 +10,14 @@ import {
   } from "./header.js"
 class HeaderC extends Component{
     constructor(props){
-        console.log(props)
         super(props);
-        console.log(props)
+        this.state = {
+            filerArray: [],
+            transition: false
+        }
+    }
+    componentWillMount() {
+        this.getRedList()
     }
     render(){
         return (
@@ -24,10 +29,10 @@ class HeaderC extends Component{
                 <div className="search_wrap">
                     <input className={[this.props.focused?'search search_focus':'search']} onFocus={this.props.handerFocus} onBlur={this.props.handerBlur} ></input>
                     <span className={this.props.focused?'iconfont loupe graybc':'iconfont loupe'}>&#xe624;</span>
-                    {this.props.focused===false?<div className="search_panel">
+                    {this.props.focused===true?<div className="search_panel">
                         <span>热门搜索</span>
-                        <div className="change_red"><span className="iconfont">&#xe6e1;</span>换一批</div>
-                        <div>{this.getRedList()}</div>
+                        <div className={["change_red ", this.state.transition?'transition':''].join(' ')} onClick={this.getRedList.bind(this)}><span className="iconfont">&#xe6e1;</span>换一批</div>
+                        <div>{this.state.filerArray}</div>
                     </div>:""}
                 </div>
                 </HeaderMenu>
@@ -42,15 +47,22 @@ class HeaderC extends Component{
             </HeaderWrap>
         )
     }
-    getRedList(){
-        axios.get("json/red_data.json").then(res=>{
-            let redData=res.data.data;
-            console.log(redData)
-            return redData.map(item=>{
-                return <span className="red_item">{item}</span>
+    async getRedList(){
+        this.setState({
+            transition: true
+        })
+        setTimeout(()=>{
+            this.setState({
+                transition: false
             })
-        }).catch(err=>{
-
+        }, 1000)
+        let res = await axios.get("json/red_data.json")
+        let redData = res.data.data;
+        let index = Math.floor(Math.random() * redData.length)
+        this.setState({
+            filerArray: redData.slice(index, index + 5).map((item, index)=>{
+                return <span className="red_item" key={index}>{item}</span>
+            })
         })
     }
 }

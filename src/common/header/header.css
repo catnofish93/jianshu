@@ -129,6 +129,11 @@
     font-size: 12px;
     margin-right: 5px
   }
+  .transition span{
+    display: inline-block;
+    transform: rotate(360deg);
+    transition: transform 1s
+  }
   .red_item{
       font-size: 12px;
       border:solid 1px #ccc;

@@ -4,7 +4,7 @@ export const HeaderWrap=styled.div`
     height:58px;
     border-bottom:solid 1px #e7e7e7
 `
-export const HeaderTitle=styled.img.attrs({src:"https://cdn2.jianshu.io/assets/web/nav-logo-4c7bbafe27adc892f3046e6978459bac.png"})`
+export const HeaderTitle=styled.img.attrs({src:"../../static/nav-logo-4c7bbafe27adc892f3046e6978459bac"})`
     width:100px;
     height:56px;
     float:left;
