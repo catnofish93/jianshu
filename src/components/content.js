@@ -63,6 +63,10 @@ class Content extends Component {
                                 <div className='title'>下载简书App</div>
                                 <div className='description'>随时随地发现和创作内容</div>
                             </div>
+                            <div className='bigqrcodewrap'>
+                                <img src={code} className="bigqrcode"/>
+                            </div>
+                            <div className='arror'></div>
                         </div>
                     </div>
                 </div>

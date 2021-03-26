@@ -8,6 +8,9 @@ import {
     HeaderMenu,
     HeaderPerson
   } from "./header.js"
+import {Route} from "react-router";
+import Content from "../../components/content";
+import Detail from "../detail/detail";
 class HeaderC extends Component{
     constructor(props){
         super(props);
@@ -21,30 +24,34 @@ class HeaderC extends Component{
     }
     render(){
         return (
-            <HeaderWrap>
-                <HeaderTitle/>
-                <HeaderMenu>
-                <div className="home">首页</div>
-                <div className="download">下载App</div>
-                <div className="search_wrap">
-                    <input className={[this.props.focused?'search search_focus':'search']} onFocus={this.props.handerFocus} onBlur={this.props.handerBlur} ></input>
-                    <span className={this.props.focused?'iconfont loupe graybc':'iconfont loupe'}>&#xe624;</span>
-                    {this.props.focused===true?<div className="search_panel">
-                        <span>热门搜索</span>
-                        <div className={["change_red ", this.state.transition?'transition':''].join(' ')} onClick={this.getRedList.bind(this)}><span className="iconfont">&#xe6e1;</span>换一批</div>
-                        <div>{this.state.filerArray}</div>
-                    </div>:""}
-                </div>
-                </HeaderMenu>
-                <HeaderPerson>
-                <span className="iconfont Aa">&#xe636;</span>
-                <span className="iconfont diamond">&#xe728;</span>
-                <span className="iconfont beta">&#xe64c;</span>
-                <div className="login">登录</div>
-                <div className="register">注册</div>
-                <div className="writer"><span className="iconfont">&#xe96a;</span>写文章</div>
-                </HeaderPerson>
-            </HeaderWrap>
+            <div>
+                <HeaderWrap>
+                    <HeaderTitle/>
+                    <HeaderMenu>
+                        <div className="home">首页</div>
+                        <div className="download">下载App</div>
+                        <div className="search_wrap">
+                            <input className={[this.props.focused?'search search_focus':'search']} onFocus={this.props.handerFocus} onBlur={this.props.handerBlur} ></input>
+                            <span className={this.props.focused?'iconfont loupe graybc':'iconfont loupe'}>&#xe624;</span>
+                            {this.props.focused===true?<div className="search_panel">
+                                <span>热门搜索</span>
+                                <div className={["change_red ", this.state.transition?'transition':''].join(' ')} onClick={this.getRedList.bind(this)}><span className="iconfont">&#xe6e1;</span>换一批</div>
+                                <div>{this.state.filerArray}</div>
+                            </div>:""}
+                        </div>
+                    </HeaderMenu>
+                    <HeaderPerson>
+                        <span className="iconfont Aa">&#xe636;</span>
+                        <span className="iconfont diamond">&#xe728;</span>
+                        <span className="iconfont beta">&#xe64c;</span>
+                        <div className="login">登录</div>
+                        <div className="register">注册</div>
+                        <div className="writer"><span className="iconfont">&#xe96a;</span>写文章</div>
+                    </HeaderPerson>
+                </HeaderWrap>
+                {this.props.children}
+            </div>
+
         )
     }
     async getRedList(){
