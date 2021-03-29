@@ -2,15 +2,8 @@ import React,{Component} from "react"
 import {connect} from "react-redux"
 import "./header.css"
 import axios from "axios"
-import {
-    HeaderWrap,
-    HeaderTitle,
-    HeaderMenu,
-    HeaderPerson
-  } from "./header.js"
-import {Route} from "react-router";
-import Content from "../../components/content";
-import Detail from "../detail/detail";
+import logo from '../../static/nav-logo-4c7bbafe27adc892f3046e6978459bac.png'
+import Comment from '../comment'
 class HeaderC extends Component{
     constructor(props){
         super(props);
@@ -25,9 +18,9 @@ class HeaderC extends Component{
     render(){
         return (
             <div>
-                <HeaderWrap>
-                    <HeaderTitle/>
-                    <HeaderMenu>
+                <div className='HeaderWrap'>
+                    <img src={logo} className='HeaderTitle' alt='图片丢失' />
+                    <div className='HeaderMenu'>
                         <div className="home">首页</div>
                         <div className="download">下载App</div>
                         <div className="search_wrap">
@@ -39,17 +32,18 @@ class HeaderC extends Component{
                                 <div>{this.state.filerArray}</div>
                             </div>:""}
                         </div>
-                    </HeaderMenu>
-                    <HeaderPerson>
+                    </div>
+                    <div className='HeaderPerson'>
                         <span className="iconfont Aa">&#xe636;</span>
                         <span className="iconfont diamond">&#xe728;</span>
                         <span className="iconfont beta">&#xe64c;</span>
                         <div className="login">登录</div>
                         <div className="register">注册</div>
                         <div className="writer"><span className="iconfont">&#xe96a;</span>写文章</div>
-                    </HeaderPerson>
-                </HeaderWrap>
+                    </div>
+                </div>
                 {this.props.children}
+                <Comment></Comment>
             </div>
 
         )
