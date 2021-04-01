@@ -37,9 +37,33 @@
     font-size: 16px;
   }
   .zan{
-
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    img{
+      width: 25px;
+      height: 25px;
+      margin-right: 5px;
+    }
   }
   .more{
 
+  }
+  .button{
+    border-radius: 50px;
+    padding: 4px 12px;
+    border: 1px solid #999;
+    margin-right: 15px;
+    cursor: pointer;
+  }
+  .publish{
+    color: #fff;
+    background-color: #ec7259;
+    border-color: #ec7259;
+  }
+  .cancel{
+    color: #7d7d7d;
+    background-color: #fff;
+    border-color: #999;
   }
 }
