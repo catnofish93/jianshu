@@ -1,10 +1,16 @@
 import React,{Component} from "react"
-import './detail.css'
+import './detail.scss'
+import Comment from "../comment";
 export default class Detail extends Component {
     render() {
         return (
             <div className='bg'>
                 <div className='detailWrap'>
+                    <div className='suspension'>
+                        <div>赞</div>
+                        <div>赞赏</div>
+                        <div>下载App</div>
+                    </div>
                     <div className='left'>
                         <div className='title'>个人从零开发一款 Android 应用、上线并盈利 | 项目复盘</div>
                         <div className='authorInfo'>
@@ -99,6 +105,7 @@ export default class Detail extends Component {
                         </div>
                     </div>
                 </div>
+                <Comment></Comment>
             </div>
         )
     }
