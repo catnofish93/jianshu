@@ -12,6 +12,12 @@ export default class Detail extends Component {
         this.state = {
             detail: {}
         }
+        store.subscribe(()=>{
+            console.log(store.getState())
+            this.setState({
+                detail: store.getState().detailReducer.articleDetail
+            })
+        })
     }
     componentDidMount() {
         this.setState({
@@ -146,11 +152,15 @@ export default class Detail extends Component {
         )
     }
     zanFunc() {
-        store.dispatch({
-            type: 'zan'
-        })
-        store.dispatch({
-            type: 'search_focus'
-        })
+        if(this.state.detail.isZan) {
+            store.dispatch({
+                type: 'cancelZan'
+            })
+        } else {
+            store.dispatch({
+                type: 'zan'
+            })
+        }
+
     }
 }

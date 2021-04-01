@@ -5,16 +5,17 @@ import store from "./store/index"
 import HeaderC from "./common/header/headerC"
 import Content from "./common/content/content";
 import Detail from "./common/detail/detail"
-import {Router, Route, hashHistory} from 'react-router'
+import {Router, Route, hashHistory, IndexRoute} from 'react-router'
 function App() {
   return (
     <Provider className="App" store={store}>
         <div>
            <Router history={hashHistory}>
-                <HeaderC path="/view" component={HeaderC}>
+                <IndexRoute component={HeaderC} />
+                <Route path="/view" component={HeaderC}>
                     <Route path="/view/list" component={Content}></Route>
                     <Route path="/view/detail" component={Detail}></Route>
-                </HeaderC>
+                </Route>
 
            </Router>
         </div>
