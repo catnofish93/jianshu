@@ -1,15 +1,51 @@
 import React,{Component} from "react"
 import './detail.scss'
 import Comment from "../comment";
+import code from '../../static/detail/code.png'
+import zan from '../../static/detail/zan.png'
+import reward from '../../static/detail/reward.png'
+import store from "../../store";
 export default class Detail extends Component {
+    constructor() {
+        super();
+        this.zanFunc = this.zanFunc.bind(this)
+        this.state = {
+            detail: {}
+        }
+    }
+    componentDidMount() {
+        this.setState({
+            detail: store.getState().detailReducer.articleDetail
+        }, ()=>{
+            console.log(this.state)
+        })
+
+    }
+
     render() {
         return (
             <div className='bg'>
                 <div className='detailWrap'>
                     <div className='suspension'>
-                        <div>赞</div>
-                        <div>赞赏</div>
-                        <div>下载App</div>
+                        <div onClick={this.zanFunc}>
+                            <div className='circle'>
+                                <img src={zan} alt='图片丢失' className='image' />
+                            </div>
+                            <div className='text'>{this.state.detail.zanNum}赞</div>
+                        </div>
+                        <div>
+                            <div className='circle'>
+                                <img src={reward} alt='图片丢失' className='image'/>
+                            </div>
+                            <div className='text'>234赞赏</div>
+                        </div>
+                        <div>
+                            <div className='circle'>
+                                <img src={code} alt='图片丢失' className='image'/>
+                            </div>
+                            <div className='text'>下载APP</div>
+                        </div>
+
                     </div>
                     <div className='left'>
                         <div className='title'>个人从零开发一款 Android 应用、上线并盈利 | 项目复盘</div>
@@ -108,5 +144,13 @@ export default class Detail extends Component {
                 <Comment></Comment>
             </div>
         )
+    }
+    zanFunc() {
+        store.dispatch({
+            type: 'zan'
+        })
+        store.dispatch({
+            type: 'search_focus'
+        })
     }
 }
