@@ -6,20 +6,23 @@ import zan from '../../static/detail/zan.png'
 import reward from '../../static/detail/reward.png'
 import store from "../../store";
 export default class Detail extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.zanFunc = this.zanFunc.bind(this)
         this.state = {
             detail: {}
         }
+        store.subscribe(()=>{
+            this.setState({
+                detail: store.getState().detailReducer.articleDetail
+            })
+        })
+        console.log(this.props, this.state)
     }
     componentDidMount() {
         this.setState({
             detail: store.getState().detailReducer.articleDetail
-        }, ()=>{
-            console.log(this.state)
         })
-
     }
 
     render() {
@@ -146,11 +149,15 @@ export default class Detail extends Component {
         )
     }
     zanFunc() {
-        store.dispatch({
-            type: 'zan'
-        })
-        store.dispatch({
-            type: 'search_focus'
-        })
+        if(this.state.detail.isZan) {
+            store.dispatch({
+                type: 'cancelZan'
+            })
+        } else {
+            store.dispatch({
+                type: 'zan'
+            })
+        }
+
     }
 }

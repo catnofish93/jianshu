@@ -72,8 +72,8 @@ const mapStateToProps=(state)=>{
         focused:state.focused
     }
 }
-const mapDispatchToProps=(dispatch)=>{
-    console.log(dispatch)
+const mapDispatchToProps=(dispatch, ownProps)=>{
+    console.log(dispatch, ownProps)
     return {
         handerFocus(){
             let actions={

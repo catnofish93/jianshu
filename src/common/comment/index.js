@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import './index.scss'
 import zan from '../../static/detail/zan.png'
+import store from "../../store";
 class Comment extends Component{
     constructor(props) {
         super(props);
@@ -9,6 +10,19 @@ class Comment extends Component{
         }
         this.inputFocus = this.inputFocus.bind(this)
         this.cancel = this.cancel.bind(this)
+        this.state = {
+            detail: {}
+        }
+        store.subscribe(()=>{
+            this.setState({
+                detail: store.getState().detailReducer.articleDetail
+            })
+        })
+    }
+    componentDidMount() {
+        this.setState({
+            detail: store.getState().detailReducer.articleDetail
+        })
     }
     render() {
         return (
@@ -24,7 +38,7 @@ class Comment extends Component{
                             <div className='comment'>评论</div>
                             <div className='zan'>
                                 <img src={zan} alt='图片丢失' className='image' />
-                                赞
+                                {this.state.detail.zanNum}赞
                             </div>
                             <div className='more'>...</div>
                         </div>
