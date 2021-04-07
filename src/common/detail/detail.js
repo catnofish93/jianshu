@@ -6,26 +6,23 @@ import zan from '../../static/detail/zan.png'
 import reward from '../../static/detail/reward.png'
 import store from "../../store";
 export default class Detail extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.zanFunc = this.zanFunc.bind(this)
         this.state = {
             detail: {}
         }
         store.subscribe(()=>{
-            console.log(store.getState())
             this.setState({
                 detail: store.getState().detailReducer.articleDetail
             })
         })
+        console.log(this.props, this.state)
     }
     componentDidMount() {
         this.setState({
             detail: store.getState().detailReducer.articleDetail
-        }, ()=>{
-            console.log(this.state)
         })
-
     }
 
     render() {
