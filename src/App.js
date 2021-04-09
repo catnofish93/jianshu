@@ -5,7 +5,9 @@ import store from "./store/index"
 import HeaderC from "./common/header/headerC"
 import Content from "./common/content/content";
 import Detail from "./common/detail/detail"
+import SignIn from "./common/signIn/signIn";
 import {Router, Route, hashHistory, IndexRoute} from 'react-router'
+import "antd/dist/antd.css";
 function App() {
   return (
     <Provider className="App" store={store}>
@@ -16,7 +18,7 @@ function App() {
                     <Route path="/view/list" component={Content}></Route>
                     <Route path="/view/detail" component={Detail}></Route>
                 </Route>
-
+                <Route path="/signIn" component={SignIn}></Route>
            </Router>
         </div>
     </Provider>
