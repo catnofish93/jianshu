@@ -24,12 +24,12 @@ class SignIn extends Component {
                 </div>
               </div>
               <div className='submitForm'>
-                <div>
-                  <div>登录</div>
-                  <div>.</div>
-                  <div>注册</div>
+                <div className={'tab'}>
+                  <div className={'text'}>登录</div>
+                  <div className={'dian'}>.</div>
+                  <div className={'text'}>注册</div>
                 </div>
-                <div>
+                <div className={'submitInfo'}>
                   <div className='cell'>
                     <Input placeholder='手机号或邮箱' prefix={<UserOutlined />} />
                   </div>
