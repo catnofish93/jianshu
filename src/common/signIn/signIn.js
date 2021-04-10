@@ -8,6 +8,10 @@ import { UserOutlined, KeyOutlined, WeiboCircleOutlined, WechatOutlined, QqOutli
 class SignIn extends Component {
     constructor() {
       super();
+      this.state={
+        tabType: 'login',
+
+      }
     }
     render() {
       return (
@@ -25,16 +29,16 @@ class SignIn extends Component {
               </div>
               <div className='submitForm'>
                 <div className={'tab'}>
-                  <div className={'text'}>登录</div>
+                  <div className={['text',this.state.tabType === 'login'?'selected':'' ]}>登录</div>
                   <div className={'dian'}>.</div>
-                  <div className={'text'}>注册</div>
+                  <div className={['text',this.state.tabType === 'login'?'selected':'' ]}>注册</div>
                 </div>
                 <div className={'submitInfo'}>
                   <div className='cell'>
                     <Input placeholder='手机号或邮箱' prefix={<UserOutlined />} />
                   </div>
                   <div className='cell'>
-                    <Input placeholder='密码' prefix={<KeyOutlined />} />
+                    <Input placeholder='密码' prefix={<KeyOutlined />} type={'password'} />
                   </div>
                 </div>
                 <div className={'loginProblem'}>
