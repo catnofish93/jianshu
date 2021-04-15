@@ -3,8 +3,10 @@ import logo from '../../static/nav-logo-4c7bbafe27adc892f3046e6978459bac.png'
 import phoneImg from '../../static/signIN/sign_in_bg-bbc515a9c2e7734807ea281b9b2ab380.png'
 import code from "../../static/download-index-side-qrcode-4130a7a6521701c4cb520ee6997d5fdb.png"
 import './signIn.scss'
-import { Input, Checkbox, Button, Divider, Popover, Dropdown, Menu } from 'antd';
+import { Input, Checkbox, Button, Divider, Popover, Dropdown, Menu, message } from 'antd';
 import { UserOutlined, KeyOutlined, WeiboCircleOutlined, WechatOutlined, QqOutlined } from '@ant-design/icons';
+import instance from "../../utils/axios";
+import axios from 'axios'
 const content = (
     <img src={code} alt={'图片丢失'} />
 )
@@ -22,6 +24,8 @@ class SignIn extends Component {
       document.title = '登录-简书'
       this.state={
         formType: 'login',
+        phone: '',
+        password: ''
       }
     }
     swichForm(type) {
@@ -30,7 +34,26 @@ class SignIn extends Component {
       })
     }
     login() {
-      this.props.router.push('/view/list')
+      instance.post( '/login', {phone: this.state.phone, password: this.state.password}).then(res =>{
+        if (JSON.stringify(res) === '{}') {
+          message.error('账号不存在')
+        } else {
+          message.success('登录成功')
+          this.props.router.push('/view/list')
+        }
+      }).catch(e => {
+      })
+    }
+    phoneChange(e) {
+      console.log(e.target.value)
+      this.setState({
+        phone: e.target.value
+      })
+    }
+    passwordChange(e) {
+      this.setState({
+        password: e.target.value
+      })
     }
     render() {
       return (
@@ -60,10 +83,10 @@ class SignIn extends Component {
                         (
                             <div>
                               <div className='cell'>
-                                <Input placeholder='手机号或邮箱' prefix={<UserOutlined />} />
+                                <Input placeholder='手机号或邮箱' prefix={<UserOutlined />} value={this.state.phone} onChange={this.phoneChange.bind(this)} />
                               </div>
                               <div className='cell'>
-                                <Input placeholder='密码' prefix={<KeyOutlined />} type={'password'} />
+                                <Input placeholder='密码' prefix={<KeyOutlined />} type={'password'} value={this.state.password} onChange={this.passwordChange.bind(this)} />
                               </div>
                             </div>
 
