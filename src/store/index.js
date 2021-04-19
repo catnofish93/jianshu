@@ -1,9 +1,11 @@
 import {createStore, combineReducers} from 'redux'
 import reducer from './reducer'
 import detailReducer from "./detailReducer";
+import user from "./user";
 const rootReducer = combineReducers({
     reducer,
-    detailReducer
+    detailReducer,
+    user
 })
 const store=createStore(
     rootReducer,

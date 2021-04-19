@@ -170,3 +170,7 @@
     position:relative;
     line-height:58px
   }
+  .contentWrap{
+    height: calc(100% - 58px);
+    overflow: auto;
+  }

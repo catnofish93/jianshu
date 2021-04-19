@@ -36,12 +36,12 @@ class HeaderC extends Component{
                         <span className="iconfont Aa">&#xe636;</span>
                         <span className="iconfont diamond">&#xe728;</span>
                         <span className="iconfont beta">&#xe64c;</span>
-                        <div className="login">登录</div>
-                        <div className="register">注册</div>
+                        <div className="login" onClick={this.toLogin.bind(this)}>登录</div>
+                        <div className="register" onClick={this.toLogin.bind(this)}>注册</div>
                         <div className="writer"><span className="iconfont">&#xe96a;</span>写文章</div>
                     </div>
                 </div>
-                {this.props.children}
+                <div className='contentWrap'>{this.props.children}</div>
             </div>
 
         )
@@ -65,6 +65,9 @@ class HeaderC extends Component{
             }),
             focused: true
         })
+    }
+    toLogin() {
+        this.props.router.replace('/signIn')
     }
 }
 const mapStateToProps=(state)=>{
