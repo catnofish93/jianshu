@@ -50,10 +50,13 @@
     color: #787878
 }
 .comment{
-    color: #787878
+    color: #b4b4b4
+}
+.comment .diamond, .like .diamond{
+    color: #b4b4b4
 }
 .like{
-    color: #787878
+    color: #b4b4b4
 }
 .adverImage{
     width: 100%;
