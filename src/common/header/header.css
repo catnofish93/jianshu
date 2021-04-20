@@ -174,3 +174,13 @@
     height: calc(100% - 58px);
     overflow: auto;
   }
+  .dropdown{
+    margin-right: 20px;
+  }
+  .menu{
+    padding: 10px;
+  }
+  .menu .iconfont{
+    margin-right: 10px;
+    color:#ed7961
+  }

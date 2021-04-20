@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Provider} from "react-redux"
+import { PersistGate } from 'redux-persist/integration/react'
 import store from "./store/index"
 import HeaderC from "./common/header/headerC"
 import Content from "./common/content/content";
@@ -10,7 +11,8 @@ import {Router, Route, hashHistory} from 'react-router'
 import "antd/dist/antd.css";
 function App() {
   return (
-    <Provider className="App" store={store}>
+    <Provider className="App" store={store().store}>
+      <PersistGate loading={null} persistor={store().persistor}>
         <div>
            <Router history={hashHistory}>
              <Route path="/" component={SignIn}></Route>
@@ -21,6 +23,7 @@ function App() {
               <Route path="/signIn" component={SignIn}></Route>
            </Router>
         </div>
+      </PersistGate>
     </Provider>
   );
 }
