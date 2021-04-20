@@ -137,7 +137,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch ,ownProps) => {
   return {
     userStore(user) {
-      sessionStorage.setItem('user', user)
+      sessionStorage.setItem('user', JSON.stringify(user))
       dispatch({
         type: 'loginUser',
         data: user

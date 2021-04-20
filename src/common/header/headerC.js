@@ -3,6 +3,8 @@ import {connect} from "react-redux"
 import "./header.css"
 import axios from "axios"
 import logo from '../../static/nav-logo-4c7bbafe27adc892f3046e6978459bac.png'
+import {Dropdown, Menu} from 'antd'
+import { DownOutlined } from '@ant-design/icons';
 class HeaderC extends Component{
     constructor(props){
         super(props);
@@ -10,6 +12,44 @@ class HeaderC extends Component{
             filerArray: [],
             transition: false
         }
+        this.state.menu = <Menu>
+            <Menu.Item className={'menu'}>
+                <span className={'iconfont'}>&#xe7d8;</span>
+                我的主页
+            </Menu.Item>
+            <Menu.Item className={'menu'}>
+                <span className={'iconfont'}>&#xe60a;</span>
+                收藏的文章
+            </Menu.Item>
+            <Menu.Item className={'menu'}>
+                <span className={'iconfont'}>&#xe60a;</span>
+                我的主页
+            </Menu.Item>
+            <Menu.Item className={'menu'}>
+                <span className={'iconfont'}>&#xe68c;</span>
+                喜欢的文章
+            </Menu.Item>
+            <Menu.Item className={'menu'}>
+                <span className={'iconfont'}>&#xe6cf;</span>
+                已购内容
+            </Menu.Item>
+            <Menu.Item className={'menu'}>
+                <span className={'iconfont'}>&#xe603;</span>
+                我的钱包
+            </Menu.Item>
+            <Menu.Item className={'menu'}>
+                <span className={'iconfont'}>&#xe68d;</span>
+                设置
+            </Menu.Item>
+            <Menu.Item className={'menu'}>
+                <span className={'iconfont'}>&#xe60d;</span>
+                帮助与反馈
+            </Menu.Item>
+            <Menu.Item className={'menu'} onClick={this.props.quit.bind(this)}>
+                <span className={'iconfont'}>&#xe72e;</span>
+                退出
+            </Menu.Item>
+        </Menu>
     }
     componentWillMount() {
         this.getRedList()
@@ -36,8 +76,19 @@ class HeaderC extends Component{
                         <span className="iconfont Aa">&#xe636;</span>
                         <span className="iconfont diamond">&#xe728;</span>
                         <span className="iconfont beta">&#xe64c;</span>
-                        <div className="login" onClick={this.toLogin.bind(this)}>登录</div>
-                        <div className="register" onClick={this.toLogin.bind(this)}>注册</div>
+                        {
+                            this.props.user.id
+                                ? <Dropdown overlay = {this.state.menu} className={'dropdown'}>
+                                    <div>
+                                        <img src={this.props.user.img} alt={'图片丢失'} /><DownOutlined />
+                                    </div>
+                                  </Dropdown>
+                                :<div className="login" onClick={this.toLogin.bind(this)}>登录</div>
+                        }
+                        {
+                            this.props.user.id
+                            ?'' :<div className="register" onClick={this.toLogin.bind(this)}>注册</div>
+                        }
                         <div className="writer"><span className="iconfont">&#xe96a;</span>写文章</div>
                     </div>
                 </div>
@@ -71,8 +122,10 @@ class HeaderC extends Component{
     }
 }
 const mapStateToProps=(state)=>{
+    console.log(state)
     return {
-        focused:state.focused
+        focused:state.focused,
+        user: state.user
     }
 }
 const mapDispatchToProps=(dispatch, ownProps)=>{
@@ -89,6 +142,15 @@ const mapDispatchToProps=(dispatch, ownProps)=>{
                 type:"search_blur"
             }
             dispatch(actions)
+        },
+        quit() {
+            let actions={
+                type: "user",
+                user: {
+                }
+            }
+            dispatch(actions)
+            this.props.router.replace('/signIn')
         }
     }
 }
