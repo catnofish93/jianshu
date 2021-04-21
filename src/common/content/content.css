@@ -111,3 +111,12 @@
     left: 140px;
     top: -10px
 }
+.otherFunction{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.otherFunction .item{
+    margin: 0 3px;
+}

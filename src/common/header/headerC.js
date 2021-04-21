@@ -10,7 +10,8 @@ class HeaderC extends Component{
         super(props);
         this.state = {
             filerArray: [],
-            transition: false
+            transition: false,
+            domHeight: document.body.clientHeight - 58
         }
         this.state.menu = <Menu>
             <Menu.Item className={'menu'}>
@@ -92,7 +93,7 @@ class HeaderC extends Component{
                         <div className="writer"><span className="iconfont">&#xe96a;</span>写文章</div>
                     </div>
                 </div>
-                <div className='contentWrap'>{this.props.children}</div>
+                <div className='contentWrap' style={{height: this.state.domHeight + 'px'}}>{this.props.children}</div>
             </div>
 
         )

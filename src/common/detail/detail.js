@@ -4,7 +4,8 @@ import Comment from "../comment";
 import code from '../../static/detail/code.png'
 import zan from '../../static/detail/zan.png'
 import reward from '../../static/detail/reward.png'
-import store from "../../store";
+import store1 from "../../store";
+const store = store1().store
 export default class Detail extends Component {
     constructor(props) {
         super(props);

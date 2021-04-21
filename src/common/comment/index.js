@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import './index.scss'
 import zan from '../../static/detail/zan.png'
-import store from "../../store";
+import store1 from "../../store";
+const store = store1().store
 class Comment extends Component{
     constructor(props) {
         super(props);
