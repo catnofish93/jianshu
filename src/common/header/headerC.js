@@ -11,6 +11,7 @@ class HeaderC extends Component{
         this.state = {
             filerArray: [],
             transition: false,
+            goTopShow: false,
             domHeight: document.body.clientHeight - 58
         }
         this.state.menu = <Menu>
@@ -93,10 +94,32 @@ class HeaderC extends Component{
                         <div className="writer"><span className="iconfont">&#xe96a;</span>写文章</div>
                     </div>
                 </div>
-                <div className='contentWrap' style={{height: this.state.domHeight + 'px'}}>{this.props.children}</div>
+                <div className='contentWrap' style={{height: this.state.domHeight + 'px'}} onScroll={this.contentScroll.bind(this)}>{this.props.children}</div>
+                {
+                    this.state.goTopShow ?
+                      <div className={'goTop'} onClick={this.goTop.bind(this)}>
+                          <span className={'iconfont'}>&#xe66d;</span>
+                      </div>
+                      : ''
+                }
             </div>
 
         )
+    }
+    contentScroll(e) {
+        console.log(e.currentTarget)
+        if (e.currentTarget.scrollTop === 0) {
+            this.setState({
+                goTopShow: false
+            })
+        } else {
+            this.setState({
+                goTopShow: true
+            })
+        }
+    }
+    goTop(e) {
+
     }
     async getRedList(e){
         this.setState({

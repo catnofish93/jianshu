@@ -6,6 +6,8 @@ import lianzai from "../../static/banner-s-5-4ba25cf5041931a0ed2062828b4064cb.pn
 import copyRight from "../../static/banner-s-7-1a0222c91694a1f38e610be4bf9669be.png"
 import code from "../../static/download-index-side-qrcode-4130a7a6521701c4cb520ee6997d5fdb.png"
 import record from '../../static/copyRight/smrz-557fa318122c99a66523209bf9753a27.png'
+import weiffa from '../../static/copyRight/weifa-57fe174be588966e9ae70967539666e3.jpg'
+import wxb from '../../static/copyRight/wxb-e6e244a25f15a58bc91ceb4ea6d0e70a.png'
 import {Button, Breadcrumb} from 'antd'
 class Content extends Component {
     constructor(props) {
@@ -183,6 +185,8 @@ class Content extends Component {
                             <Breadcrumb.Item>简书</Breadcrumb.Item>
                             <Breadcrumb.Item>沪ICP备11018329号-5</Breadcrumb.Item>
                             <Breadcrumb.Item><img src={record} alt={'图片丢失'}></img>沪公网安备31010402002252号</Breadcrumb.Item>
+                            <Breadcrumb.Item><img src={weiffa} alt={'图片丢失'} style={{width: '100px',marginRight: "20px"}}></img><img src={wxb} alt={'图片丢失'} style={{width: '100px'}}></img>简书网举报电话：021-34770013</Breadcrumb.Item>
+                            <Breadcrumb.Item>亲爱的市民朋友，上海警方反诈劝阻电话“962110”系专门针对避免您财产被骗受损而设，请您一旦收到来电，立即接听</Breadcrumb.Item>
                         </Breadcrumb>
                     </div>
                     <div className='adver'>
