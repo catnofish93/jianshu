@@ -11,6 +11,7 @@ import wxb from '../../static/copyRight/wxb-e6e244a25f15a58bc91ceb4ea6d0e70a.png
 import {Button, Breadcrumb} from 'antd'
 class Content extends Component {
     constructor(props) {
+        document.title = '简书-创作你的创作'
         super(props);
         this.state = {
             download1: false

@@ -16,7 +16,7 @@ class HeaderC extends Component{
         }
         this.state.menu = <Menu>
             <Menu.Item className={'menu'}>
-                <span className={'iconfont'}>&#xe7d8;</span>
+                <span className={'iconfont'}> &#xe7d8;</span>
                 我的主页
             </Menu.Item>
             <Menu.Item className={'menu'}>
@@ -63,7 +63,7 @@ class HeaderC extends Component{
                 <div className='HeaderWrap'>
                     <img src={logo} className='HeaderTitle' alt='图片丢失' />
                     <div className='HeaderMenu'>
-                        <div className="home">首页</div>
+                        <div className="home" onClick={this.goHome.bind(this)}>首页</div>
                         <div className="download">下载App</div>
                         <div className="search_wrap">
                             <input className={[this.props.focused?'search search_focus':'search']} onFocus={this.props.handerFocus} onBlur={!this.state.transition?this.props.handerBlur:''} ></input>
@@ -121,6 +121,10 @@ class HeaderC extends Component{
     }
     goTop(e) {
         this.contentWrap.current.scrollTop = 0
+    }
+    goHome() {
+        console.log('----')
+        this.props.router.replace('/view/list')
     }
     async getRedList(e){
         this.setState({

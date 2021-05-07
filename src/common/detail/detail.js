@@ -21,6 +21,7 @@ export default class Detail extends Component {
         console.log(this.props, this.state)
     }
     componentDidMount() {
+        document.title = '个人从零开发一款 Android 应用、上线并盈利 | 项目复盘'
         this.setState({
             detail: store.getState().detailReducer.articleDetail
         })

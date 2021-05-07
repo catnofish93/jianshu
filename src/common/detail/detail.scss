@@ -50,7 +50,7 @@
 }
 .attention{
     border: solid 1px rgb(236, 114, 89);
-    padding: 4px;
+    padding: 4px 10px;
     border-radius: 15px;
     line-height: 1;
     cursor: pointer;
@@ -64,6 +64,7 @@
 .paper{
     color:#404040;
     line-height: 1.2;
+    font-size: 16px;
 }
 .authorCell{
     border: solid 1px #eee;
