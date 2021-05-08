@@ -35,17 +35,38 @@ class SignIn extends Component {
       })
     }
     login() {
-      instance.post( '/login', {phone: this.state.phone, password: this.state.password}).then(res =>{
-        if (JSON.stringify(res) === '{}') {
-          message.error('账号不存在')
-        } else {
-          message.success('登录成功')
-          console.log(this, res)
-          this.props.userStore(res)
-          this.props.router.push('/view/list')
+      // instance.post( '/login', {phone: this.state.phone, password: this.state.password}).then(res =>{
+      //   if (JSON.stringify(res) === '{}') {
+      //     message.error('账号不存在')
+      //   } else {
+      //     message.success('登录成功')
+      //     console.log(this, res)
+      //     this.props.userStore(res)
+      //     this.props.router.push('/view/list')
+      //   }
+      // }).catch(e => {
+      // })
+      console.log(this.props.dispatch)
+      let that = this
+      function thunkFunction() {
+        return (dispatch) => {
+          return instance.post( '/login', {phone: that.state.phone, password: that.state.password}).then(res =>{
+            if (JSON.stringify(res) === '{}') {
+              message.error('账号不存在')
+            } else {
+              message.success('登录成功')
+              sessionStorage.setItem('user', JSON.stringify(res))
+              dispatch({
+                type: 'loginUser',
+                data: res
+              })
+              that.props.router.push('/view/list')
+            }
+          }).catch(e => {
+          })
         }
-      }).catch(e => {
-      })
+      }
+      this.props.dispatch(thunkFunction())
     }
     phoneChange(e) {
       this.setState({
@@ -144,4 +165,4 @@ const mapDispatchToProps = (dispatch ,ownProps) => {
     }
   }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(SignIn)
+export default connect(mapStateToProps)(SignIn)

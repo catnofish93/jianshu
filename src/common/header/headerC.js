@@ -151,8 +151,9 @@ class HeaderC extends Component{
     }
 }
 const mapStateToProps=(state)=>{
+    console.log(state)
     return {
-        focused:state.focused,
+        focused:state.reducer.focused,
         user: state.user
     }
 }
