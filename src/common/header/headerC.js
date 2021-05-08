@@ -151,14 +151,12 @@ class HeaderC extends Component{
     }
 }
 const mapStateToProps=(state)=>{
-    console.log(state)
     return {
         focused:state.focused,
         user: state.user
     }
 }
 const mapDispatchToProps=(dispatch, ownProps)=>{
-    console.log(dispatch, ownProps)
     return {
         handerFocus(){
             let actions={

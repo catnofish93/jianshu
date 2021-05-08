@@ -48,7 +48,6 @@ class SignIn extends Component {
       })
     }
     phoneChange(e) {
-      console.log(e.target.value)
       this.setState({
         phone: e.target.value
       })

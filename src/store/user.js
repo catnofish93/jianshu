@@ -7,7 +7,6 @@ const defaultState = {
     img: ''
 }
 export default (state = defaultState, action) => {
-  console.log(action)
   if (action.type === 'loginUser') {
     return Object.assign({}, state, action.data)
   }
