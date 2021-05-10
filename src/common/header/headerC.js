@@ -3,8 +3,9 @@ import {connect} from "react-redux"
 import "./header.css"
 import axios from "axios"
 import logo from '../../static/nav-logo-4c7bbafe27adc892f3046e6978459bac.png'
-import {Dropdown, Menu} from 'antd'
+import {Dropdown, Menu, Popover} from 'antd'
 import { DownOutlined } from '@ant-design/icons';
+import SwitchStatus from '../../components/switch'
 class HeaderC extends Component{
     constructor(props){
         super(props);
@@ -52,6 +53,17 @@ class HeaderC extends Component{
                 退出
             </Menu.Item>
         </Menu>
+        this.state.content = (
+          <div style={{width: '200px'}}>
+              <div className={'cell'} style={{display: 'flex'}}>
+                  <div className={'night'}>夜间模式</div>
+                  <SwitchStatus list={['开','关']}></SwitchStatus>
+              </div>
+              <div className={'cell'}>
+                  <SwitchStatus list={['宋体','黑体']}></SwitchStatus>
+              </div>
+          </div>
+        );
         this.contentWrap = React.createRef()
     }
     componentWillMount() {
@@ -76,7 +88,9 @@ class HeaderC extends Component{
                         </div>
                     </div>
                     <div className='HeaderPerson'>
-                        <span className="iconfont Aa">&#xe636;</span>
+                        <Popover placement="bottomRight" title={''} content={this.state.content} trigger="click">
+                            <span className="iconfont Aa">&#xe636;</span>
+                        </Popover>
                         <span className="iconfont diamond">&#xe728;</span>
                         <span className="iconfont beta">&#xe64c;</span>
                         {
