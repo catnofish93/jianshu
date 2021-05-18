@@ -55,12 +55,12 @@ class HeaderC extends Component{
         </Menu>
         this.state.content = (
           <div style={{width: '200px'}}>
-              <div className={'cell'} style={{display: 'flex'}}>
-                  <div className={'night'}>夜间模式</div>
-                  <SwitchStatus list={['开','关']}></SwitchStatus>
+              <div className={'cell'} style={{display: 'flex', alignItems: 'center'}}>
+                  <div className={'night'} style={{marginRight: '15px'}}>夜间模式</div>
+                  <SwitchStatus list={['开','关']} selected={0}></SwitchStatus>
               </div>
               <div className={'cell'}>
-                  <SwitchStatus list={['宋体','黑体']}></SwitchStatus>
+                  <SwitchStatus list={['宋体','黑体']} selected={0}></SwitchStatus>
               </div>
           </div>
         );

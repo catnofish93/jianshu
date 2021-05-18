@@ -8,15 +8,32 @@ import code from "../../static/download-index-side-qrcode-4130a7a6521701c4cb520e
 import record from '../../static/copyRight/smrz-557fa318122c99a66523209bf9753a27.png'
 import weiffa from '../../static/copyRight/weifa-57fe174be588966e9ae70967539666e3.jpg'
 import wxb from '../../static/copyRight/wxb-e6e244a25f15a58bc91ceb4ea6d0e70a.png'
-import {Button, Breadcrumb} from 'antd'
+import { Button, Breadcrumb, message } from 'antd';
+import instance from "../../utils/axios";
 class Content extends Component {
     constructor(props) {
         document.title = '简书-创作你的创作'
         super(props);
         this.state = {
-            download1: false
+            download1: false,
+            articleList: []
         }
     }
+    componentDidMount() {
+        instance.post('/articleList', {}).then(res => {
+            if (res.success === false) {
+                message.error('获取列表信息失败')
+            } else {
+                console.log(res)
+                this.setState({
+                    articleList: res
+                })
+            }
+        }).catch(e => {
+            console.log(e)
+        })
+    }
+
     toDetail() {
         this.props.router.push('/view/detail')
     }
@@ -35,136 +52,20 @@ class Content extends Component {
             <div>
                 <div className='wrap'>
                     <div>
-                        <div className='infoList' onClick={this.toDetail.bind(this)}>
-                            <div className='name'>小姑子的儿子和我长得一模一样，偷偷做亲子鉴定后，我彻底崩溃</div>
-                            <div className='detail'>我和老公是大学同学，他的父亲去世早，他和妹妹都是婆婆一手带大的，抱着穷养儿子富养女的观念，婆婆从小就对老公严加管教，对小姑子就相对宽容了太多。小...</div>
-                            <div className='operator'>
-                                <div className='diamond'><span className="iconfont diamond">&#xe728;</span>13.4</div>
-                                <div className='author'>风之色彩2019</div>
-                                <div className='comment'><span className="iconfont diamond">&#xe602;</span>2</div>
-                                <div className='like'><span className="iconfont diamond">&#xe60a;</span>60</div>
-                            </div>
-                        </div>
-                        <div className='infoList'>
-                            <div className='name'>小姑子的儿子和我长得一模一样，偷偷做亲子鉴定后，我彻底崩溃</div>
-                            <div className='detail'>我和老公是大学同学，他的父亲去世早，他和妹妹都是婆婆一手带大的，抱着穷养儿子富养女的观念，婆婆从小就对老公严加管教，对小姑子就相对宽容了太多。小...</div>
-                            <div className='operator'>
-                                <div className='diamond'><span className="iconfont diamond">&#xe728;</span>13.4</div>
-                                <div className='author'>风之色彩2019</div>
-                                <div className='comment'><span className="iconfont diamond">&#xe602;</span>2</div>
-                                <div className='like'><span className="iconfont diamond">&#xe60a;</span>60</div>
-                            </div>
-                        </div>
-                        <div className='infoList'>
-                            <div className='name'>小姑子的儿子和我长得一模一样，偷偷做亲子鉴定后，我彻底崩溃</div>
-                            <div className='detail'>我和老公是大学同学，他的父亲去世早，他和妹妹都是婆婆一手带大的，抱着穷养儿子富养女的观念，婆婆从小就对老公严加管教，对小姑子就相对宽容了太多。小...</div>
-                            <div className='operator'>
-                                <div className='diamond'><span className="iconfont diamond">&#xe728;</span>13.4</div>
-                                <div className='author'>风之色彩2019</div>
-                                <div className='comment'><span className="iconfont diamond">&#xe728;</span>2</div>
-                                <div className='like'><span className="iconfont diamond">&#xe728;</span>60</div>
-                            </div>
-                        </div>
-                        <div className='infoList'>
-                            <div className='name'>小姑子的儿子和我长得一模一样，偷偷做亲子鉴定后，我彻底崩溃</div>
-                            <div className='detail'>我和老公是大学同学，他的父亲去世早，他和妹妹都是婆婆一手带大的，抱着穷养儿子富养女的观念，婆婆从小就对老公严加管教，对小姑子就相对宽容了太多。小...</div>
-                            <div className='operator'>
-                                <div className='diamond'><span className="iconfont diamond">&#xe728;</span>13.4</div>
-                                <div className='author'>风之色彩2019</div>
-                                <div className='comment'><span className="iconfont diamond">&#xe728;</span>2</div>
-                                <div className='like'><span className="iconfont diamond">&#xe728;</span>60</div>
-                            </div>
-                        </div>
-                        <div className='infoList'>
-                            <div className='name'>小姑子的儿子和我长得一模一样，偷偷做亲子鉴定后，我彻底崩溃</div>
-                            <div className='detail'>我和老公是大学同学，他的父亲去世早，他和妹妹都是婆婆一手带大的，抱着穷养儿子富养女的观念，婆婆从小就对老公严加管教，对小姑子就相对宽容了太多。小...</div>
-                            <div className='operator'>
-                                <div className='diamond'><span className="iconfont diamond">&#xe728;</span>13.4</div>
-                                <div className='author'>风之色彩2019</div>
-                                <div className='comment'><span className="iconfont diamond">&#xe728;</span>2</div>
-                                <div className='like'><span className="iconfont diamond">&#xe728;</span>60</div>
-                            </div>
-                        </div>
-                        <div className='infoList'>
-                            <div className='name'>小姑子的儿子和我长得一模一样，偷偷做亲子鉴定后，我彻底崩溃</div>
-                            <div className='detail'>我和老公是大学同学，他的父亲去世早，他和妹妹都是婆婆一手带大的，抱着穷养儿子富养女的观念，婆婆从小就对老公严加管教，对小姑子就相对宽容了太多。小...</div>
-                            <div className='operator'>
-                                <div className='diamond'><span className="iconfont diamond">&#xe728;</span>13.4</div>
-                                <div className='author'>风之色彩2019</div>
-                                <div className='comment'><span className="iconfont diamond">&#xe728;</span>2</div>
-                                <div className='like'><span className="iconfont diamond">&#xe728;</span>60</div>
-                            </div>
-                        </div>
-                        <div className='infoList'>
-                            <div className='name'>小姑子的儿子和我长得一模一样，偷偷做亲子鉴定后，我彻底崩溃</div>
-                            <div className='detail'>我和老公是大学同学，他的父亲去世早，他和妹妹都是婆婆一手带大的，抱着穷养儿子富养女的观念，婆婆从小就对老公严加管教，对小姑子就相对宽容了太多。小...</div>
-                            <div className='operator'>
-                                <div className='diamond'><span className="iconfont diamond">&#xe728;</span>13.4</div>
-                                <div className='author'>风之色彩2019</div>
-                                <div className='comment'><span className="iconfont diamond">&#xe728;</span>2</div>
-                                <div className='like'><span className="iconfont diamond">&#xe728;</span>60</div>
-                            </div>
-                        </div>
-                        <div className='infoList'>
-                            <div className='name'>小姑子的儿子和我长得一模一样，偷偷做亲子鉴定后，我彻底崩溃</div>
-                            <div className='detail'>我和老公是大学同学，他的父亲去世早，他和妹妹都是婆婆一手带大的，抱着穷养儿子富养女的观念，婆婆从小就对老公严加管教，对小姑子就相对宽容了太多。小...</div>
-                            <div className='operator'>
-                                <div className='diamond'><span className="iconfont diamond">&#xe728;</span>13.4</div>
-                                <div className='author'>风之色彩2019</div>
-                                <div className='comment'><span className="iconfont diamond">&#xe728;</span>2</div>
-                                <div className='like'><span className="iconfont diamond">&#xe728;</span>60</div>
-                            </div>
-                        </div>
-                        <div className='infoList'>
-                            <div className='name'>小姑子的儿子和我长得一模一样，偷偷做亲子鉴定后，我彻底崩溃</div>
-                            <div className='detail'>我和老公是大学同学，他的父亲去世早，他和妹妹都是婆婆一手带大的，抱着穷养儿子富养女的观念，婆婆从小就对老公严加管教，对小姑子就相对宽容了太多。小...</div>
-                            <div className='operator'>
-                                <div className='diamond'><span className="iconfont diamond">&#xe728;</span>13.4</div>
-                                <div className='author'>风之色彩2019</div>
-                                <div className='comment'><span className="iconfont diamond">&#xe728;</span>2</div>
-                                <div className='like'><span className="iconfont diamond">&#xe728;</span>60</div>
-                            </div>
-                        </div>
-                        <div className='infoList'>
-                            <div className='name'>小姑子的儿子和我长得一模一样，偷偷做亲子鉴定后，我彻底崩溃</div>
-                            <div className='detail'>我和老公是大学同学，他的父亲去世早，他和妹妹都是婆婆一手带大的，抱着穷养儿子富养女的观念，婆婆从小就对老公严加管教，对小姑子就相对宽容了太多。小...</div>
-                            <div className='operator'>
-                                <div className='diamond'><span className="iconfont diamond">&#xe728;</span>13.4</div>
-                                <div className='author'>风之色彩2019</div>
-                                <div className='comment'><span className="iconfont diamond">&#xe728;</span>2</div>
-                                <div className='like'><span className="iconfont diamond">&#xe728;</span>60</div>
-                            </div>
-                        </div>
-                        <div className='infoList'>
-                            <div className='name'>小姑子的儿子和我长得一模一样，偷偷做亲子鉴定后，我彻底崩溃</div>
-                            <div className='detail'>我和老公是大学同学，他的父亲去世早，他和妹妹都是婆婆一手带大的，抱着穷养儿子富养女的观念，婆婆从小就对老公严加管教，对小姑子就相对宽容了太多。小...</div>
-                            <div className='operator'>
-                                <div className='diamond'><span className="iconfont diamond">&#xe728;</span>13.4</div>
-                                <div className='author'>风之色彩2019</div>
-                                <div className='comment'><span className="iconfont diamond">&#xe728;</span>2</div>
-                                <div className='like'><span className="iconfont diamond">&#xe728;</span>60</div>
-                            </div>
-                        </div>
-                        <div className='infoList'>
-                            <div className='name'>小姑子的儿子和我长得一模一样，偷偷做亲子鉴定后，我彻底崩溃</div>
-                            <div className='detail'>我和老公是大学同学，他的父亲去世早，他和妹妹都是婆婆一手带大的，抱着穷养儿子富养女的观念，婆婆从小就对老公严加管教，对小姑子就相对宽容了太多。小...</div>
-                            <div className='operator'>
-                                <div className='diamond'><span className="iconfont diamond">&#xe728;</span>13.4</div>
-                                <div className='author'>风之色彩2019</div>
-                                <div className='comment'><span className="iconfont diamond">&#xe728;</span>2</div>
-                                <div className='like'><span className="iconfont diamond">&#xe728;</span>60</div>
-                            </div>
-                        </div>
-                        <div className='infoList'>
-                            <div className='name'>小姑子的儿子和我长得一模一样，偷偷做亲子鉴定后，我彻底崩溃</div>
-                            <div className='detail'>我和老公是大学同学，他的父亲去世早，他和妹妹都是婆婆一手带大的，抱着穷养儿子富养女的观念，婆婆从小就对老公严加管教，对小姑子就相对宽容了太多。小...</div>
-                            <div className='operator'>
-                                <div className='diamond'><span className="iconfont diamond">&#xe728;</span>13.4</div>
-                                <div className='author'>风之色彩2019</div>
-                                <div className='comment'><span className="iconfont diamond">&#xe728;</span>2</div>
-                                <div className='like'><span className="iconfont diamond">&#xe728;</span>60</div>
-                            </div>
-                        </div>
+                        {this.state.articleList.map(item => {
+                            return (
+                              <div className='infoList' onClick={this.toDetail.bind(this)}>
+                                  <div className='name'>{item.title}</div>
+                                  <div className='detail'>{item.discription}</div>
+                                  <div className='operator'>
+                                      <div className='diamond'><span className="iconfont diamond">&#xe728;</span>13.4</div>
+                                      <div className='author'>{item.author_name}</div>
+                                      <div className='comment'><span className="iconfont diamond">&#xe602;</span>{item.comment_num}</div>
+                                      <div className='like'><span className="iconfont diamond">&#xe60a;</span>60</div>
+                                  </div>
+                              </div>
+                            )
+                        })}
                         <Button type="primary" block={true} shape={'round'} style={{background: '#9b9b9b', color: '#fff', marginTop: '15px'}}>阅读更多</Button>
                         <div className={'otherFunction'}>
                             <div className={'item'}>关于简书</div>

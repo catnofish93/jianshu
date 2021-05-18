@@ -16,7 +16,7 @@ class SwitchStatus extends React.Component {
   }
   render() {
     return (
-      <div className={'wrap'}>
+      <div className={'SwitchWrap'} style={{display: 'flex'}}>
         {this.props.list.map((item, index) => {
           return <div style={itemStyle} key={index}>{item}</div>
         })}
