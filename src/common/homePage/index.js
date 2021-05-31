@@ -12,35 +12,36 @@ class HomePage extends Component{
 
   render() {
     return (
-      <div>
-        <div>
-          <div className={'left'}></div>
-          <div className={'right'}>
-            <div>不爱吃鱼的猫</div>
-            <ul>
-              <li>
-                <div>2</div>
-                <div>关注</div>
-              </li>
-              <li>
-                <div>2</div>
-                <div>粉丝</div>
-              </li>
-              <li>
-                <div>2</div>
-                <div>文章</div>
-              </li>
-              <li>
-                <div>2</div>
-                <div>字数</div>
-              </li>
-              <li>
-                <div>2</div>
-                <div>收藏喜欢</div>
-              </li>
-            </ul>
+      <div className={'wrap'}>
+        <div style={{width: '600px'}}>
+          <div style={{display: 'flex',width: '100%'}}>
+            <div className={'left'}></div>
+            <div className={'right'}>
+              <div>不爱吃鱼的猫</div>
+              <ul>
+                <li>
+                  <div>2</div>
+                  <div>关注</div>
+                </li>
+                <li>
+                  <div>2</div>
+                  <div>粉丝</div>
+                </li>
+                <li>
+                  <div>2</div>
+                  <div>文章</div>
+                </li>
+                <li>
+                  <div>2</div>
+                  <div>字数</div>
+                </li>
+                <li>
+                  <div>2</div>
+                  <div>收藏喜欢</div>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
         <Menu mode="horizontal">
           <Menu.Item key="mail" icon={<MailOutlined />}>
             文章
@@ -55,6 +56,7 @@ class HomePage extends Component{
             热门
           </Menu.Item>
         </Menu>
+        </div>
       </div>
     )
   }
