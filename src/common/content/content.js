@@ -30,12 +30,12 @@ class Content extends Component {
                 })
             }
         }).catch(e => {
-            console.log(e)
+            message.error(e)
         })
     }
 
-    toDetail() {
-        this.props.router.push('/view/detail')
+    toDetail(item) {
+        this.props.router.push({pathname: '/view/detail', query: {id: item.id}})
     }
     download1Focus() {
         this.setState({
@@ -54,7 +54,7 @@ class Content extends Component {
                     <div>
                         {this.state.articleList.map(item => {
                             return (
-                              <div className='infoList' onClick={this.toDetail.bind(this)}>
+                              <div className='infoList' onClick={this.toDetail.bind(this, item)}>
                                   <div className='name'>{item.title}</div>
                                   <div className='detail'>{item.discription}</div>
                                   <div className='operator'>

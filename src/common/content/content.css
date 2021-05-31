@@ -38,6 +38,7 @@
 .operator div{
     margin-right: 10px;
     cursor: pointer;
+    display: flex;
 }
 .iconfont.diamond{
     margin: 0;

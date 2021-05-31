@@ -7,6 +7,7 @@ import HeaderC from "./common/header/headerC"
 import Content from "./common/content/content";
 import Detail from "./common/detail/detail"
 import SignIn from "./common/signIn/signIn";
+import PageHome from "./common/homePage/index"
 import {Router, Route, hashHistory} from 'react-router'
 import "antd/dist/antd.css";
 function App() {
@@ -19,6 +20,7 @@ function App() {
               <Route path="/view" component={HeaderC}>
                   <Route path="/view/list" component={Content}></Route>
                   <Route path="/view/detail" component={Detail}></Route>
+                  <Route path="/pageHome" component={PageHome}></Route>
               </Route>
               <Route path="/signIn" component={SignIn}></Route>
            </Router>

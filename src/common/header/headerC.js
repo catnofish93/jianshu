@@ -16,7 +16,7 @@ class HeaderC extends Component{
             domHeight: document.body.clientHeight - 58
         }
         this.state.menu = <Menu>
-            <Menu.Item className={'menu'}>
+            <Menu.Item className={'menu'} onClick={this.goHomePage.bind(this)}>
                 <span className={'iconfont'}> &#xe7d8;</span>
                 我的主页
             </Menu.Item>
@@ -68,6 +68,9 @@ class HeaderC extends Component{
     }
     componentWillMount() {
         this.getRedList()
+    }
+    goHomePage() {
+        this.props.router.push('/pageHome')
     }
     render(){
         return (

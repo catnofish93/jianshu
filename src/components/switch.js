@@ -8,7 +8,8 @@ const itemStyle = {
   fontSize: '14px',
   letterSpacing: '0 !important',
   color: '#969696',
-  border: '1px solid #e5e5e5'
+  border: '1px solid #e5e5e5',
+  cursor: 'pointer',
 }
 class SwitchStatus extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class SwitchStatus extends React.Component {
   }
   render() {
     return (
-      <div className={'SwitchWrap'} style={{display: 'flex'}}>
+      <div className={'SwitchWrap'} style={{display: 'flex',marginBottom: '10px'}}>
         {this.props.list.map((item, index) => {
           return <div style={itemStyle} key={index}>{item}</div>
         })}

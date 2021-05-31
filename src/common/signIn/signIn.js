@@ -35,18 +35,6 @@ class SignIn extends Component {
       })
     }
     login() {
-      // instance.post( '/login', {phone: this.state.phone, password: this.state.password}).then(res =>{
-      //   if (JSON.stringify(res) === '{}') {
-      //     message.error('账号不存在')
-      //   } else {
-      //     message.success('登录成功')
-      //     console.log(this, res)
-      //     this.props.userStore(res)
-      //     this.props.router.push('/view/list')
-      //   }
-      // }).catch(e => {
-      // })
-      console.log(this.props.dispatch)
       let that = this
       function thunkFunction() {
         return (dispatch) => {
@@ -55,7 +43,7 @@ class SignIn extends Component {
               message.error('账号不存在')
             } else {
               message.success('登录成功')
-              sessionStorage.setItem('user', JSON.stringify(res))
+              sessionStorage.setItem('token', res.token)
               dispatch({
                 type: 'loginUser',
                 data: res
