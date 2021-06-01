@@ -90,6 +90,13 @@ class HomePage extends Component{
             ): ''
           }
         </div>
+        <div>
+          个人介绍
+        </div>
+        <div>我关注的专题/文集/连载</div>
+        <div>我喜欢的文章</div>
+        <div>我创建的专题</div>
+        <div>创建一个新专题</div>
       </div>
     )
   }
