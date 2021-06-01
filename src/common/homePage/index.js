@@ -1,13 +1,15 @@
 import React,{Component} from "react"
 import {connect} from "react-redux"
-import {Menu} from 'antd'
+import {Menu, Input, Button} from 'antd'
 import { ReadOutlined, BellOutlined, CommentOutlined, FireOutlined } from '@ant-design/icons';
+const { TextArea } = Input
 import styles from './index.module.css'
 class HomePage extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      current: 'read'
+      current: 'read',
+      isEdit: false
     }
   }
   componentDidMount() {
@@ -18,6 +20,21 @@ class HomePage extends Component{
     this.setState({
       current: e.key
 
+    })
+  }
+  edit() {
+    this.setState({
+      isEdit: true
+    })
+  }
+  cancelEdit() {
+    this.setState({
+      isEdit: false
+    })
+  }
+  saveEdit() {
+    this.setState({
+      isEdit: false
     })
   }
   render() {
@@ -93,12 +110,23 @@ class HomePage extends Component{
           }
         </div>
         <div className={styles.right}>
-          <div className={styles.introduce}>
-            <span className={styles.title}>个人介绍</span>
-            <div className={styles.edit}>
-              <span className={'iconfont'}>&#xe640;</span>
-              <span>编辑</span>
+          <div style={{borderBottom: 'solid 1px #f0f0f0'}}>
+            <div className={styles.introduce}>
+              <span className={styles.title}>个人介绍</span>
+              <div className={styles.edit}>
+                <span className={'iconfont'}>&#xe640;</span>
+                <span onClick={this.edit.bind(this)}>编辑</span>
+              </div>
             </div>
+            {
+              this.state.isEdit ? (
+                <div>
+                  <TextArea rows={4} style={{background: '#ddd'}} />
+                  <Button shape={'round'} style={{margin: '10px 0',border: '1px solid #42c02e',color: '#42c02e'}} onClick={this.saveEdit.bind(this)}>保存</Button>
+                  <Button shape={'round'} style={{marginLeft: '10px'}} type={'text'} onClick={this.cancelEdit.bind(this)}>取消</Button>
+                </div>
+              ): ''
+            }
           </div>
           <div className={styles.interest}>
             <div className={styles.attention}><span className={'iconfont'}>&#xe68f;</span>我关注的专题/文集/连载</div>

@@ -62,6 +62,7 @@
 .interest .attention, .interest .like{
   display: flex;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 .create{
   padding: 25px 0;
@@ -73,9 +74,11 @@
   color: #969696;
 }
 .create .createOperator{
-  color: #3db922
+  color: #3db922;
+  cursor: pointer;
 }
 .create .article{
   color: #2f2f2f;
+  cursor: pointer;
 }
 

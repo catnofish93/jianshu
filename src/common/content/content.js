@@ -20,18 +20,18 @@ class Content extends Component {
         }
     }
     componentDidMount() {
-        instance.post('/articleList', {}).then(res => {
-            if (res.success === false) {
-                message.error('获取列表信息失败')
-            } else {
-                console.log(res)
-                this.setState({
-                    articleList: res
-                })
-            }
-        }).catch(e => {
-            message.error(e)
-        })
+        // instance.post('/articleList', {}).then(res => {
+        //     if (res.success === false) {
+        //         message.error('获取列表信息失败')
+        //     } else {
+        //         console.log(res)
+        //         this.setState({
+        //             articleList: res
+        //         })
+        //     }
+        // }).catch(e => {
+        //     message.error(e)
+        // })
     }
 
     toDetail(item) {

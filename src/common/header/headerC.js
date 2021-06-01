@@ -5,7 +5,7 @@ import axios from "axios"
 import logo from '../../static/nav-logo-4c7bbafe27adc892f3046e6978459bac.png'
 import {Dropdown, Menu, Popover} from 'antd'
 import { DownOutlined } from '@ant-design/icons';
-import SwitchStatus from '../../components/switch'
+import SwitchStatus from '../../components/switch/switch'
 class HeaderC extends Component{
     constructor(props){
         super(props);
@@ -13,7 +13,8 @@ class HeaderC extends Component{
             filerArray: [],
             transition: false,
             goTopShow: false,
-            domHeight: document.body.clientHeight - 58
+            domHeight: document.body.clientHeight - 58,
+            modelIndex: 0
         }
         this.state.menu = <Menu>
             <Menu.Item className={'menu'} onClick={this.goHomePage.bind(this)}>
@@ -57,7 +58,7 @@ class HeaderC extends Component{
           <div style={{width: '200px'}}>
               <div className={'cell'} style={{display: 'flex', alignItems: 'center'}}>
                   <div className={'night'} style={{marginRight: '15px'}}>夜间模式</div>
-                  <SwitchStatus list={['开','关']} selected={0}></SwitchStatus>
+                  <SwitchStatus list={['开','关']} selected={this.state.modelIndex} changeModel={this.changeModel.bind(this)}></SwitchStatus>
               </div>
               <div className={'cell'}>
                   <SwitchStatus list={['宋体','黑体']} selected={0}></SwitchStatus>
@@ -67,10 +68,16 @@ class HeaderC extends Component{
         this.contentWrap = React.createRef()
     }
     componentWillMount() {
-        this.getRedList()
+        // this.getRedList()
     }
     goHomePage() {
         this.props.router.push('/pageHome')
+    }
+    changeModel() {
+        console.log(this.state.modelIndex)
+        this.setState({
+            modelIndex: this.state.modelIndex === 1?0:1
+        })
     }
     render(){
         return (
