@@ -125,7 +125,6 @@ class HeaderC extends Component{
         )
     }
     contentScroll(e) {
-        console.log(e.currentTarget)
         if (e.currentTarget.scrollTop === 0) {
             this.setState({
                 goTopShow: false
@@ -140,7 +139,6 @@ class HeaderC extends Component{
         this.contentWrap.current.scrollTop = 0
     }
     goHome() {
-        console.log('----')
         this.props.router.replace('/view/list')
     }
     async getRedList(e){
@@ -168,7 +166,6 @@ class HeaderC extends Component{
     }
 }
 const mapStateToProps=(state)=>{
-    console.log(state)
     return {
         focused:state.reducer.focused,
         user: state.user

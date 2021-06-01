@@ -2,7 +2,6 @@ const defaultState={
     focused:false
 }
 export default (state=defaultState,action)=>{
-    console.log(action)
     if(action.type==="search_focus"){
         return {
             focused:true
