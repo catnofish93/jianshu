@@ -3,18 +3,22 @@ import styles from './switch.module.scss'
 class SwitchStatus extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props)
+    this.state = {
+      selected: 0
+    }
   }
-  changeSelected(e) {
-    this.props.changeModel()
+  changeModel() {
+    this.setState({
+      selected: this.state.selected === 1 ? 0:1
+    })
   }
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log(this.props)
-  }
+
   render() {
     return (
       <div className={'SwitchWrap'} style={{display: 'flex',marginBottom: '10px'}}>
         {this.props.list.map((item, index) => {
-          return <div className={[styles.item, this.props.selected === index?styles.selected:''].join(' ')} key={index} onClick={this.changeSelected.bind(this, index)}>{item}</div>
+          return <div className={[styles.item, this.state.selected === index?styles.selected:''].join(' ')} key={index} onClick={this.changeModel.bind(this)}>{item}</div>
         })}
       </div>
     )
