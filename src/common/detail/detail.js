@@ -34,7 +34,6 @@ export default class Detail extends Component {
                 detail: res
             })
         }).catch(e => {
-            console.log(e)
             message.error(e)
         })
     }

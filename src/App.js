@@ -15,7 +15,6 @@ function App() {
   return (
     <Provider className="App" store={store().store}>
       <PersistGate loading={null} persistor={store().persistor}>
-        <div>
            <Router history={hashHistory}>
              <Route path="/" component={SignIn}></Route>
               <Route path="/view" component={HeaderC}>
@@ -26,7 +25,6 @@ function App() {
               <Route path="/signIn" component={SignIn}></Route>
              <Route path="/WriteArticle" component={WriteArticle}></Route>
            </Router>
-        </div>
       </PersistGate>
     </Provider>
   );

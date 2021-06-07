@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import styles from './index.module.scss'
 import { Menu } from 'antd';
 import BraftEditor from 'braft-editor'
+import { PlusOutlined, SettingOutlined, BarsOutlined, QuestionCircleOutlined, SnippetsOutlined } from '@ant-design/icons';
 import 'braft-editor/dist/index.css'
 class WriteArtilce extends Component {
   constructor() {
@@ -33,19 +34,49 @@ class WriteArtilce extends Component {
       <div className={styles.wrap}>
         <div className={styles.menu}>
           <div className={styles.backHome}>回首页</div>
-          <Menu theme="dark">
-            <Menu.Item key="1">随笔</Menu.Item>
-            <Menu.Item key="2">日记本</Menu.Item>
-          </Menu>
+          <div className={styles.newCollect}><PlusOutlined />新建文集</div>
+          <div className={styles.menus}>
+            <div className={styles.menuItem}>
+              <div>随笔</div>
+              <SettingOutlined />
+            </div>
+            <div className={styles.menuItem}>
+              <div>日记本</div>
+              <SettingOutlined />
+            </div>
+          </div>
+          <div className={styles.footer}>
+            <div className={styles.item}>
+              <BarsOutlined />
+              <div>设置</div>
+            </div>
+            <div className={styles.item}>
+              <div>遇到问题</div>
+              <QuestionCircleOutlined />
+            </div>
+          </div>
         </div>
         <div className={styles.articleList}>
-          <div>新建文章</div>
+          <div className={styles.newArticle}>
+            <PlusOutlined />
+            <div>新建文章</div>
+          </div>
+          <div className={styles.article}>
+            <div className={styles.item}>
+              <SnippetsOutlined />
+              <div className={styles.center}>
+                <div className={styles.title}>无标题文章</div>
+                <div className={styles.description}>描述</div>
+              </div>
+              <SettingOutlined />
+            </div>
+          </div>
         </div>
         <div className={styles.content}>
           <div className={styles.status}>
             已保存
           </div>
-          <div className={styles.articleDate}>
+          <div className={styles.title}>
             2021-06-07
           </div>
           <BraftEditor
