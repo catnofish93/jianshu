@@ -63,23 +63,25 @@ class HeaderC extends Component{
               <div className={styles.cell}>
                   <SwitchStatus list={['宋体','黑体']}></SwitchStatus>
               </div>
+              <div className={styles.cell}>
+                  <SwitchStatus list={['简','繁']}></SwitchStatus>
+              </div>
           </div>
         );
         this.contentWrap = React.createRef()
     }
-    componentWillMount() {
+    componentWillMount(e) {
         this.getRedList()
     }
     goHomePage() {
         this.props.router.push('/pageHome')
     }
-    redListClose() {
-        console.log('--------')
+    redListClose(e) {
         this.props.handerBlur()
     }
     render(){
         return (
-            <div onClick={this.redListClose.bind(this)}>
+            <div onClick={e => {this.redListClose(e)}}>
                 <div className={styles.HeaderWrap}>
                     <img src={logo} className={styles.HeaderTitle} alt='图片丢失' />
                     <div className={styles.HeaderMenu}>
@@ -114,7 +116,7 @@ class HeaderC extends Component{
                             this.props.user.id
                             ?'' :<div className={styles.register} onClick={this.toLogin.bind(this)}>注册</div>
                         }
-                        <div className={styles.writer}><span className={styles.iconfont}>&#xe96a;</span>写文章</div>
+                        <div className={styles.writer} onClick={this.writeArticle.bind(this)}><span className={styles.iconfont}>&#xe96a;</span>写文章</div>
                     </div>
                 </div>
                 <div ref={this.contentWrap} className={styles.contentWrap} style={{height: this.state.domHeight + 'px'}} onScroll={this.contentScroll.bind(this)}>{this.props.children}</div>
@@ -147,6 +149,9 @@ class HeaderC extends Component{
         this.props.router.replace('/view/list')
     }
     async getRedList(e){
+        if (e) {
+            e.stopPropagation()
+        }
         this.setState({
             transition: true
         })
@@ -161,13 +166,19 @@ class HeaderC extends Component{
         let index = Math.floor(Math.random() * redData.length)
         this.setState({
             filerArray: redData.slice(index, index + 5).map((item, index)=>{
-                return <span className={styles.red_item} key={index}>{item}</span>
+                return <span onClick={(e) => {this.redItemClick(e, item)}} className={styles.red_item} key={index}>{item}</span>
             }),
             focused: true
         })
     }
     toLogin() {
         this.props.router.replace('/signIn')
+    }
+    redItemClick(e, value) {
+        e.stopPropagation()
+    }
+    writeArticle() {
+        this.props.router.replace('/WriteArticle')
     }
 }
 const mapStateToProps=(state)=>{
@@ -178,7 +189,8 @@ const mapStateToProps=(state)=>{
 }
 const mapDispatchToProps=(dispatch, ownProps)=>{
     return {
-        handerFocus(){
+        handerFocus(e){
+            e.stopPropagation()
             let actions={
                 type:"search_focus"
             }

@@ -8,6 +8,7 @@ import Content from "./common/content/content";
 import Detail from "./common/detail/detail"
 import SignIn from "./common/signIn/signIn";
 import PageHome from "./common/homePage/index"
+import WriteArticle from "./common/writeArticle/index"
 import {Router, Route, hashHistory} from 'react-router'
 import "antd/dist/antd.css";
 function App() {
@@ -23,6 +24,7 @@ function App() {
                   <Route path="/pageHome" component={PageHome}></Route>
               </Route>
               <Route path="/signIn" component={SignIn}></Route>
+             <Route path="/WriteArticle" component={WriteArticle}></Route>
            </Router>
         </div>
       </PersistGate>
