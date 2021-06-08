@@ -25,11 +25,7 @@ class HeaderC extends Component{
                 <span className={styles.iconfont}>&#xe60a;</span>
                 收藏的文章
             </Menu.Item>
-            <Menu.Item className={styles.menu}>
-                <span className={styles.iconfont}>&#xe60a;</span>
-                我的主页
-            </Menu.Item>
-            <Menu.Item className={styles.menu}>
+            <Menu.Item className={styles.menu} onClick={this.goLikeArticle.bind(this)}>
                 <span className={styles.iconfont}>&#xe68c;</span>
                 喜欢的文章
             </Menu.Item>
@@ -75,6 +71,9 @@ class HeaderC extends Component{
     }
     goHomePage() {
         this.props.router.push('/pageHome')
+    }
+    goLikeArticle() {
+        this.props.router.push('/likeArticle')
     }
     redListClose(e) {
         this.props.handerBlur()

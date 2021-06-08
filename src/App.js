@@ -9,6 +9,7 @@ import Detail from "./common/detail/detail"
 import SignIn from "./common/signIn/signIn";
 import PageHome from "./common/homePage/index"
 import WriteArticle from "./common/writeArticle/index"
+import LikeArticle from './common/likeArticle/index'
 import {Router, Route, hashHistory} from 'react-router'
 import "antd/dist/antd.css";
 function App() {
@@ -21,6 +22,7 @@ function App() {
                   <Route path="/view/list" component={Content}></Route>
                   <Route path="/view/detail" component={Detail}></Route>
                   <Route path="/pageHome" component={PageHome}></Route>
+                  <Route path="/likeArticle" component={LikeArticle}></Route>
               </Route>
               <Route path="/signIn" component={SignIn}></Route>
              <Route path="/WriteArticle" component={WriteArticle}></Route>

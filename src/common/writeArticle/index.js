@@ -1,14 +1,32 @@
 import React, {Component} from 'react'
 import styles from './index.module.scss'
-import { Menu } from 'antd';
+import { Menu, Modal, Popconfirm, Dropdown } from 'antd';
 import BraftEditor from 'braft-editor'
 import { PlusOutlined, SettingOutlined, BarsOutlined, QuestionCircleOutlined, SnippetsOutlined } from '@ant-design/icons';
 import 'braft-editor/dist/index.css'
+const { SubMenu } = Menu
+const menu = (
+  <Menu mode="vertical">
+    <Menu.Item key="4">简书作者实名认证</Menu.Item>
+    <SubMenu key="sub2" title="默认编辑器">
+      <Menu.Item key="7">MarkDown编辑器</Menu.Item>
+      <Menu.Item key="8">富文本编辑器</Menu.Item>
+    </SubMenu>
+    <SubMenu key="sub3" title="设置显示模式">
+      <Menu.Item key="7">打开夜间模式</Menu.Item>
+      <Menu.Item key="8">切换至宋体</Menu.Item>
+      <Menu.Item key="8">切换至黑体</Menu.Item>
+    </SubMenu>
+    <Menu.Item key="4">回收站</Menu.Item>
+    <Menu.Item key="4">帮助与反馈</Menu.Item>
+  </Menu>
+)
 class WriteArtilce extends Component {
   constructor() {
     super();
     this.state = {
-      editorState: ''
+      editorState: '',
+      helpModalShow: false
     }
   }
   // state = {
@@ -29,11 +47,24 @@ class WriteArtilce extends Component {
     // const htmlContent = await fetchEditorContent()
     // // 使用BraftEditor.createEditorState将html字符串转换为编辑器需要的editorStat
   }
+  helpShow() {
+    this.setState({
+      helpModalShow: true
+    })
+  }
+  closeHelpModal() {
+    this.setState({
+      helpModalShow: false
+    })
+  }
+  goHome() {
+    this.props.router.replace('/view/list')
+  }
   render() {
     return (
       <div className={styles.wrap}>
         <div className={styles.menu}>
-          <div className={styles.backHome}>回首页</div>
+          <div className={styles.backHome} onClick={this.goHome.bind(this)}>回首页</div>
           <div className={styles.newCollect}><PlusOutlined />新建文集</div>
           <div className={styles.menus}>
             <div className={styles.menuItem}>
@@ -46,11 +77,13 @@ class WriteArtilce extends Component {
             </div>
           </div>
           <div className={styles.footer}>
-            <div className={styles.item}>
-              <BarsOutlined />
-              <div>设置</div>
-            </div>
-            <div className={styles.item}>
+            <Dropdown overlay={menu} placement="topCenter" arrow>
+              <div className={styles.item}>
+                <BarsOutlined />
+                <div>设置</div>
+              </div>
+            </Dropdown>
+            <div className={styles.item} onClick={this.helpShow.bind(this)}>
               <div>遇到问题</div>
               <QuestionCircleOutlined />
             </div>
@@ -85,6 +118,15 @@ class WriteArtilce extends Component {
             onSave={this.submitContent}
           />
         </div>
+        <Modal title={'常见问题'} footer={'我知道了'} visible={this.state.helpModalShow} width={'400px'} onCancel={this.closeHelpModal.bind(this)}>
+          <div>如果你在使用编辑器的过程中遇到问题，可以尝试以下方案解决：</div>
+          <br />
+          <div>1. Windows用户尽量将浏览器设置为极速模式，不要使用兼容模式写作</div>
+          <br />
+          <div>2.推荐使用chrome浏览器，创作体验更加流畅</div>
+          <br />
+          <div>3.浏览器插件可能与编辑器功能冲突，可以在使用编辑器时禁用插件</div>
+        </Modal>
       </div>
     )
   }
