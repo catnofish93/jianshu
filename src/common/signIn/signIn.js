@@ -124,7 +124,7 @@ class SignIn extends Component {
                     <div>登录遇到问题？</div>
                   </Dropdown>
                 </div>
-                <Button type="primary" className='loginButton' htmlType="submit" style={{borderRadius: '20px',margin: '10px'}} onClick={this.login.bind(this)}>登录</Button>
+                <Button type="primary" className='loginButton' style={{borderRadius: '20px',margin: '10px'}} onClick={this.login.bind(this)}>登录</Button>
                 <Divider>社交账号登录</Divider>
                 <div className='social'>
                   <WeiboCircleOutlined className={'socialIcon'} style={{color: '#e05244'}} />

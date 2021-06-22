@@ -26,7 +26,7 @@ class Content extends Component {
             } else {
                 console.log(res)
                 this.setState({
-                    articleList: res
+                    articleList: res.list
                 })
             }
         }).catch(e => {

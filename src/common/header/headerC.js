@@ -3,9 +3,10 @@ import {connect} from "react-redux"
 import styles from  "./header.module.scss"
 import axios from "axios"
 import logo from '../../static/nav-logo-4c7bbafe27adc892f3046e6978459bac.png'
-import {Dropdown, Menu, Popover} from 'antd'
+import { Dropdown, Menu, message, Popover } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import SwitchStatus from '../../components/switch/switch'
+import instance from '../../utils/axios';
 class HeaderC extends Component{
     constructor(props){
         super(props);
@@ -160,14 +161,16 @@ class HeaderC extends Component{
 
             })
         }, 1000)
-        let res = await axios.get("json/red_data.json")
-        let redData = res.data.data;
-        let index = Math.floor(Math.random() * redData.length)
-        this.setState({
-            filerArray: redData.slice(index, index + 5).map((item, index)=>{
-                return <span onClick={(e) => {this.redItemClick(e, item)}} className={styles.red_item} key={index}>{item}</span>
-            }),
-            focused: true
+        instance.get('/getSearchList').then(res => {
+            console.log(res)
+            this.setState({
+                filerArray: res.map((item, index)=>{
+                    return <span onClick={(e) => {this.redItemClick(e, item[index])}} className={styles.red_item} key={index}>{item['name']}</span>
+                }),
+                focused: true
+            })
+        }).catch(e => {
+            message.error(e)
         })
     }
     toLogin() {
@@ -175,6 +178,7 @@ class HeaderC extends Component{
     }
     redItemClick(e, value) {
         e.stopPropagation()
+
     }
     writeArticle() {
         this.props.router.replace('/WriteArticle')
