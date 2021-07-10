@@ -18,9 +18,9 @@ instance.interceptors.request.use(function (config) {
 // 添加响应拦截器
 instance.interceptors.response.use(function (response) {
   if (response.data.success === false) {
-    setTimeout(() => {
-      window.location.replace('http://' + window.location.host)
-    }, 1000)
+    // setTimeout(() => {
+    //   window.location.replace('http://' + window.location.host)
+    // }, 1000)
     throw response.data.message
   } else {
     // 对响应数据做点什么
