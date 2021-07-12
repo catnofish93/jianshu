@@ -1,6 +1,7 @@
 import React,{Component} from "react"
 import './detail.scss'
 import Comment from "../comment";
+import CommentList from '../commentList';
 import code from '../../static/detail/code.png'
 import zan from '../../static/detail/zan.png'
 import reward from '../../static/detail/reward.png'
@@ -134,6 +135,7 @@ export default class Detail extends Component {
                     </div>
                 </div>
                 <Comment></Comment>
+                <CommentList></CommentList>
             </div>
         )
     }
