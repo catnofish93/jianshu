@@ -22,7 +22,7 @@ class HeaderC extends Component{
                 <span className={styles.iconfont}> &#xe7d8;</span>
                 我的主页
             </Menu.Item>
-            <Menu.Item className={styles.menu}>
+            <Menu.Item className={styles.menu} onClick={this.goCollect.bind(this)}>
                 <span className={styles.iconfont}>&#xe60a;</span>
                 收藏的文章
             </Menu.Item>
@@ -30,7 +30,7 @@ class HeaderC extends Component{
                 <span className={styles.iconfont}>&#xe68c;</span>
                 喜欢的文章
             </Menu.Item>
-            <Menu.Item className={styles.menu}>
+            <Menu.Item className={styles.menu} onClick={this.shop.bind(this)}>
                 <span className={styles.iconfont}>&#xe6cf;</span>
                 已购内容
             </Menu.Item>
@@ -75,6 +75,12 @@ class HeaderC extends Component{
     }
     goLikeArticle() {
         this.props.router.push('/likeArticle')
+    }
+    goCollect() {
+        this.props.router.push('/shopArticle')
+    }
+    shop() {
+        this.props.router.push('/collectArticle')
     }
     redListClose(e) {
         this.props.handerBlur()
